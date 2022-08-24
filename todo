@@ -1,0 +1,39 @@
+reactive forms
+    form control
+    form group
+    form array
+dialog de cadastro
+    propriedades
+    passar parametros para a dialog
+    disableclose
+validação required
+validação min max
+validação minlength
+grid
+    filtro
+    paginacao
+    ordenação
+remover 
+editar
+
+adicionar endereço
+fazer uma chamada na api do cep
+popular campos
+salvar endereco
+
+importar excel
+exportar excel
+
+roteamento
+componente pai e filho
+ciclo de vida
+
+
+componentes avançados, criando componetnes inputs
+
+select-autocomplete
+ng-datepicker
+
+servicos globais
+
+

@@ -1,21 +1,49 @@
 <h1>{{title}}</h1>
+<button (click)="openDialog()"> ADD </button>
 
 
-<!-- <input type="text" [(ngModel)]="title"> -->
-<div class="exemplo">
-  <mat-form-field class="example-form-field" appearance="fill">
-    <mat-label>Nome</mat-label>
-    <input matInput type="text" [(ngModel)]="nome">
-    <!-- <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
-      <mat-icon>close</mat-icon>
-    </button> -->
-  </mat-form-field>
+<mat-form-field appearance="standard">
+  <mat-label>Filtro</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Açoes </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button (click)="editar(row)"> Editar</button>
+      </td>
+    </ng-container>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+      <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+    </ng-container>
+
+    <!-- Sobrenome Column -->
+    <ng-container matColumnDef="sobrenome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sobrenome </th>
+      <td mat-cell *matCellDef="let row"> {{row.sobrenome}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
-
-<button (click)="lista.push(nome)"> ADD </button>
-
-
-<div *ngFor="let item of lista">
-  {{item}}
-</div>
-
